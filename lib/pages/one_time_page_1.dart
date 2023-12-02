@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_journal/components/app_images.dart';
 import 'package:travel_journal/config/app_routes.dart';
-import 'package:travel_journal/pages/one_time_page_2.dart';
 
 class OneTimeFirstPage extends StatelessWidget {
   const OneTimeFirstPage({super.key});
@@ -52,8 +51,8 @@ class OneTimeFirstPage extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.bottomRight,
                           child: Container(
-                            child: Padding(
-                              padding: const EdgeInsets.all(2),
+                            child: const Padding(
+                              padding: EdgeInsets.all(2),
                               child: Icon(
                                 Icons.double_arrow_rounded,
                                 color: Colors.white,

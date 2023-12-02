@@ -1,9 +1,7 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:travel_journal/components/app_colors.dart';
 import 'package:travel_journal/components/app_images.dart';
-import 'package:travel_journal/config/app_routes.dart';
 //import 'package:travel_journal/components/app_images.dart';
 
 class AppStartPage extends StatelessWidget {
@@ -44,7 +42,7 @@ class AppStartPage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   color: const Color.fromRGBO(0, 0, 0, 1).withOpacity(0.3),
                   child: Column(children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 57,
                     ),
                     Container(

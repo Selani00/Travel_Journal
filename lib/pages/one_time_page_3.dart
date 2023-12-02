@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_journal/components/app_images.dart';
+import 'package:travel_journal/config/app_routes.dart';
 
 class OneTimeThirdPage extends StatelessWidget {
   const OneTimeThirdPage({super.key});
@@ -42,10 +43,22 @@ class OneTimeThirdPage extends StatelessWidget {
                               decoration: TextDecoration.none),
                         ),
                       ),
-                      const Align(
-                        alignment: Alignment.bottomRight,
-                        child: Icon(Icons.double_arrow_rounded,
-                            color: Colors.white, size: 70),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(AppRoutes.accoutsetup);
+                        },
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: const Padding(
+                            padding: EdgeInsets.all(2),
+                            child: Icon(
+                              Icons.double_arrow_rounded,
+                              color: Colors.white,
+                              size: 70,
+                            ),
+                          ),
+                        ),
                       )
                     ],
                   ),
