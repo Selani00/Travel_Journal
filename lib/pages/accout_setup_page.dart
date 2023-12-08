@@ -1,25 +1,47 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:travel_journal/components/app_colors.dart';
 import 'package:travel_journal/components/app_images.dart';
+import 'package:http/http.dart' as http;
+import 'package:travel_journal/config/app_routes.dart';
 
-class AppSetUpPage extends StatelessWidget {
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+import 'package:travel_journal/pages/config.dart';
+import 'package:travel_journal/pages/home_page.dart';
+
+class AppSetUpPage extends StatefulWidget {
+  AppSetUpPage({super.key});
+
+  @override
+  State<AppSetUpPage> createState() => _AppSetUpPageState();
+}
+
+class _AppSetUpPageState extends State<AppSetUpPage> {
+  final userNameController = TextEditingController();
+
+  final emailController = TextEditingController();
 
   bool _isNotValidate = false;
 
-  void registerUser() async {
-    if (userNameController.text.isNotEmpty && emailController.text.isNotEmpty) {
+  Future<String> doLogin() async {
+    final username = userNameController.text;
+    final email = emailController.text;
+    final body = {'userName': username, 'email': email};
+    final response =
+        await http.post(Uri.parse(registration), body: jsonEncode(body));
+    if (response.statusCode == 200) {
+      Navigator.of(context).pushNamed(AppRoutes.homepage);
+      return response.body;
     } else {
-      setState(() {
-        _isNotValidate = true;
-      });
+      print("Error");
+      throw Exception('Error');
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -97,11 +119,16 @@ class AppSetUpPage extends StatelessWidget {
                     margin: EdgeInsets.only(left: 15, right: 15),
                     child: TextField(
                       controller: userNameController,
+                      onChanged: (value) {
+                        setState(() {
+                          _isNotValidate = value.isEmpty;
+                        });
+                      },
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                           filled: true,
                           fillColor: AppColors.buttonColor,
-                          errorStyle: TextStyle(color: Colors.red),
+                          errorStyle: TextStyle(color: Colors.white),
                           errorText:
                               _isNotValidate ? 'Enter your User Name' : null,
                           hintText: "User Name",
@@ -113,12 +140,18 @@ class AppSetUpPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(left: 15, right: 15),
                     child: TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          _isNotValidate = false;
+                        });
+                      },
                       controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           filled: true,
                           fillColor: AppColors.buttonColor,
-                          errorStyle: TextStyle(color: Colors.red),
+                          errorStyle:
+                              TextStyle(color: Colors.white, fontSize: 15),
                           errorText: _isNotValidate ? "Enter your Email" : null,
                           hintText: "Email",
                           border: OutlineInputBorder(
@@ -126,9 +159,9 @@ class AppSetUpPage extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  GestureDetector(
-                    onTap: () {
-                      registerUser();
+                  ElevatedButton(
+                    onPressed: () {
+                      doLogin();
                     },
                     child: Container(
                       height: 60,
@@ -136,17 +169,16 @@ class AppSetUpPage extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 49, 75, 59),
                           borderRadius: BorderRadius.circular(15)),
-                      child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Create",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ]),
+                      child: Center(
+                        child: Text(
+                          "Create",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   const Spacer(),
@@ -164,24 +196,30 @@ class AppSetUpPage extends StatelessWidget {
                       color: AppColors.buttonColor,
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            AppImages.google,
-                            height: 30,
-                            width: 30,
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          const Text(
-                            " Continue with Google",
-                            style: TextStyle(
-                              fontSize: 16,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushReplacementNamed(AppRoutes.homepage);
+                      },
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              AppImages.google,
+                              height: 30,
+                              width: 30,
                             ),
-                          )
-                        ]),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            const Text(
+                              " Continue with Google",
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            )
+                          ]),
+                    ),
                   ),
                   const Spacer(),
                 ]),
@@ -191,6 +229,4 @@ class AppSetUpPage extends StatelessWidget {
       ),
     );
   }
-
-  void setState(Null Function() param0) {}
 }

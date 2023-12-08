@@ -50,14 +50,12 @@ class OneTimeSecondPage extends StatelessWidget {
                         },
                         child: Align(
                           alignment: Alignment.bottomRight,
-                          child: Container(
-                            child: const Padding(
-                              padding: EdgeInsets.all(2),
-                              child: Icon(
-                                Icons.double_arrow_rounded,
-                                color: Colors.white,
-                                size: 70,
-                              ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(2),
+                            child: Icon(
+                              Icons.double_arrow_rounded,
+                              color: Colors.white,
+                              size: 70,
                             ),
                           ),
                         ),
