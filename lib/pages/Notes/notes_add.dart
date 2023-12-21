@@ -71,7 +71,7 @@ class _NoteEditorScreenState extends State<NoteAddPage> {
                 .collection("Notes")
                 .add({
                   "note_title": _titleController.text,
-                  "creation_data": date,
+                  "creation_date": date,
                   "note_content": _mainController.text,
                   "color_id": color_id.toString(),
                 })

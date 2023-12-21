@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:travel_journal/components/app_colors.dart';
 
 class NoteEditPage extends StatefulWidget {
-  NoteEditPage(this.doc,{super.key});
+  NoteEditPage(this.doc, {super.key});
 
   QueryDocumentSnapshot doc;
 
@@ -138,7 +138,7 @@ class _ExistingNoteEditorScreenState extends State<NoteEditPage> {
                         // Use the document ID to update
                         .update({
                           "note_title": _titleController.text,
-                          "creation_data": date,
+                          "creation_date": date,
                           "note_content": _mainController.text,
                           "color_id": color_id.toString(),
                         })

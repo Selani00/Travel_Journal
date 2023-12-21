@@ -15,4 +15,11 @@ class AppImages {
 
   //svg
   static const doublearrow = '${_svg}doublearrow.svg';
+
+  //home icons
+  static const ic_home = '${_svg}home_icon.svg';
+  static const ic_add = '${_svg}add_icon.svg';
+  static const ic_map = '${_svg}map_icon.svg';
+  static const ic_weather = '${_svg}weather_icon.svg';
+  static const ic_user = '${_svg}user_icon.svg';
 }
