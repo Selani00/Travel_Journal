@@ -1,13 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:travel_journal/components/app_colors.dart';
 import 'package:travel_journal/components/app_images.dart';
-import 'package:http/http.dart' as http;
-import 'package:travel_journal/config/app_routes.dart';
 
-import 'package:travel_journal/pages/config.dart';
-import 'package:travel_journal/pages/home_page.dart';
+import 'package:travel_journal/config/app_routes.dart';
 
 class AppSetUpPage extends StatefulWidget {
   AppSetUpPage({super.key});
@@ -22,21 +17,6 @@ class _AppSetUpPageState extends State<AppSetUpPage> {
   final emailController = TextEditingController();
 
   bool _isNotValidate = false;
-
-  Future<String> doLogin() async {
-    final username = userNameController.text;
-    final email = emailController.text;
-    final body = {'userName': username, 'email': email};
-    final response =
-        await http.post(Uri.parse(registration), body: jsonEncode(body));
-    if (response.statusCode == 200) {
-      Navigator.of(context).pushNamed(AppRoutes.homepage);
-      return response.body;
-    } else {
-      print("Error");
-      throw Exception('Error');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,24 +139,19 @@ class _AppSetUpPageState extends State<AppSetUpPage> {
                     ),
                   ),
                   const Spacer(),
-                  ElevatedButton(
-                    onPressed: () {
-                      doLogin();
-                    },
-                    child: Container(
-                      height: 60,
-                      width: 200,
-                      decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 49, 75, 59),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Center(
-                        child: Text(
-                          "Create",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600,
-                          ),
+                  Container(
+                    height: 60,
+                    width: 200,
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 49, 75, 59),
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Center(
+                      child: Text(
+                        "Create",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),

@@ -1,5 +1,3 @@
-
-
 import 'package:travel_journal/pages/app_start_page.dart';
 import 'package:travel_journal/pages/one_time_page_1.dart';
 import 'package:travel_journal/pages/one_time_page_2.dart';
@@ -14,8 +12,7 @@ class AppRoutes {
     onetimesecond: (context) => const OneTimeSecondPage(),
     onetimethird: (context) => const OneTimeThirdPage(),
     accoutsetup: (context) => AppSetUpPage(),
-    homepage:(context)=>HomePage(),
-
+    homepage: (context) => HomePage(),
   };
 
   static const start = '/';

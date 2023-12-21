@@ -2,6 +2,8 @@ class AppImages {
   static const _img = 'assets/images/';
   static const _svg = 'assets/svg/';
 
+
+  //start to login
   static const startImg = '${_img}start.jpg';
   static const logo = '${_img}logo.png';
   static const onetimefirst = '${_img}onetimefirst.jpg';
