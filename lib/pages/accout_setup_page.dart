@@ -174,7 +174,7 @@ class _AppSetUpPageState extends State<AppSetUpPage> {
                     child: GestureDetector(
                       onTap: () {
                         Navigator.of(context)
-                            .pushReplacementNamed(AppRoutes.homepage);
+                            .pushReplacementNamed(AppRoutes.notehomepage);
                       },
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
