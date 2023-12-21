@@ -1,4 +1,5 @@
 import 'package:travel_journal/pages/app_start_page.dart';
+import 'package:travel_journal/pages/map_page.dart';
 import 'package:travel_journal/pages/one_time_page_1.dart';
 import 'package:travel_journal/pages/one_time_page_2.dart';
 import 'package:travel_journal/pages/one_time_page_3.dart';
@@ -13,6 +14,7 @@ class AppRoutes {
     onetimethird: (context) => const OneTimeThirdPage(),
     accoutsetup: (context) => AppSetUpPage(),
     homepage: (context) => HomePage(),
+    mappage:(context)=>MapPage(),
   };
 
   static const start = '/';
@@ -21,4 +23,5 @@ class AppRoutes {
   static const onetimethird = '/onetimethird';
   static const accoutsetup = '/accoutsetup';
   static const homepage = '/homepage';
+  static const mappage = '/mappage';
 }
