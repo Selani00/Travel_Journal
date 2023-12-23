@@ -18,6 +18,8 @@ class _AppSetUpPageState extends State<AppSetUpPage> {
 
   bool _isNotValidate = false;
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

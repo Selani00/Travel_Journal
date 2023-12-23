@@ -18,7 +18,7 @@ class _ExistingNoteEditorScreenState extends State<NoteEditPage> {
   String date = DateTime.now().toString();
 
   TextEditingController _titleController = TextEditingController();
-  TextEditingController _mainController = TextEditingController();
+  TextEditingController _noteController = TextEditingController();
 
   void initState() {
     super.initState();
@@ -28,7 +28,7 @@ class _ExistingNoteEditorScreenState extends State<NoteEditPage> {
     }
 
     if (widget.doc["note_content"] != null) {
-      _mainController.text = widget.doc["note_content"];
+      _noteController.text = widget.doc["note_content"];
     }
   }
 
@@ -78,13 +78,18 @@ class _ExistingNoteEditorScreenState extends State<NoteEditPage> {
             SizedBox(
               height: 28.0,
             ),
-            TextField(
-              controller: _mainController,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Note Content',
+            Expanded(
+              child: Container(
+                width: width * 0.9,
+                child: TextField(
+                  controller: _noteController,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Note Content',
+                  ),
+                  style: AppColors.mainContent,
+                ),
               ),
-              style: AppColors.mainContent,
             ),
           ]),
         ),
@@ -131,7 +136,7 @@ class _ExistingNoteEditorScreenState extends State<NoteEditPage> {
                   fixedSize: Size(60, 60),
                 ),
                 onPressed: () async {
-                  if (widget.doc.id != null) {
+                  if (widget.doc.id != true) {
                     FirebaseFirestore.instance
                         .collection("Notes")
                         .doc(widget.doc.id)
@@ -139,7 +144,7 @@ class _ExistingNoteEditorScreenState extends State<NoteEditPage> {
                         .update({
                           "note_title": _titleController.text,
                           "creation_date": date,
-                          "note_content": _mainController.text,
+                          "note_content": _noteController.text,
                           "color_id": color_id.toString(),
                         })
                         .then((_) => Navigator.pop(context))

@@ -20,8 +20,7 @@ Widget noteCard(Function()? onTap, QueryDocumentSnapshot doc) {
         color: selectedColor,
         borderRadius: BorderRadius.circular(8.0),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           Text(
             doc["note_title"],

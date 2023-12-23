@@ -20,11 +20,22 @@ class _HomeScreenState extends State<NoteHomePage> {
         backgroundColor: AppColors.mainColor,
         appBar: AppBar(
           elevation: 0.0,
-          title: Text("FireNotes",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold)),
+          title: Row(
+            children: [
+              Spacer(),
+              Text("FireNotes",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold)),
+              SizedBox(width: 70),
+              GestureDetector(
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(AppRoutes.mappage),
+                  child: Icon(Icons.location_on_rounded, color: Colors.white)),
+              Spacer(),
+            ],
+          ),
           centerTitle: true,
           backgroundColor: AppColors.mainColor,
         ),
