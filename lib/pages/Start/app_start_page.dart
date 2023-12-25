@@ -53,16 +53,12 @@ class _AppStartPageState extends State<AppStartPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        GestureDetector(
-                          onTap: () => Navigator.of(context)
-                              .pushNamed(AppRoutes.onetimefirst),
-                          child: Text(
-                            "Travel Journal",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 36,
-                              fontWeight: FontWeight.w500,
-                            ),
+                        Text(
+                          "Travel Journal",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 36,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
