@@ -43,6 +43,10 @@ dependencies:
   flutter_polyline_points: ^2.0.0
   google_fonts: ^6.1.0
   cloud_firestore: ^4.13.6
+  firebase_auth: ^4.15.3
+  firebase_storage: ^11.5.6
+  google_sign_in: ^6.2.1
+  pinput: ^3.0.1
 
 dev_dependencies:
   flutter_test:

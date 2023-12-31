@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_journal/components/app_colors.dart';
 import 'package:travel_journal/components/app_images.dart';
-
 import 'package:travel_journal/config/app_routes.dart';
 
 class AppSetUpPage extends StatefulWidget {
@@ -12,12 +11,14 @@ class AppSetUpPage extends StatefulWidget {
 }
 
 class _AppSetUpPageState extends State<AppSetUpPage> {
+  final bool _isSigning = false;
   final userNameController = TextEditingController();
-
   final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   bool _isNotValidate = false;
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,21 +139,53 @@ class _AppSetUpPageState extends State<AppSetUpPage> {
                               borderRadius: BorderRadius.circular(10))),
                     ),
                   ),
-                  const Spacer(),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Container(
-                    height: 60,
-                    width: 200,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 49, 75, 59),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Center(
-                      child: Text(
-                        "Create",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w600,
-                        ),
+                    margin: EdgeInsets.only(left: 15, right: 15),
+                    child: TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          _isNotValidate = false;
+                        });
+                      },
+                      controller: passwordController,
+                      keyboardType: TextInputType.visiblePassword,
+                      decoration: InputDecoration(
+                          filled: true,
+                          fillColor: AppColors.buttonColor,
+                          errorStyle:
+                              TextStyle(color: Colors.white, fontSize: 15),
+                          errorText:
+                              _isNotValidate ? "Enter your Password" : null,
+                          hintText: "Password",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10))),
+                    ),
+                  ),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () => print("object"),
+                    child: Container(
+                      height: 60,
+                      width: 200,
+                      decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 49, 75, 59),
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Center(
+                        child: _isSigning
+                            ? CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                            : Text(
+                                "Create",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                       ),
                     ),
                   ),
@@ -174,7 +207,7 @@ class _AppSetUpPageState extends State<AppSetUpPage> {
                     child: GestureDetector(
                       onTap: () {
                         Navigator.of(context)
-                            .pushReplacementNamed(AppRoutes.notehomepage);
+                            .pushReplacementNamed(AppRoutes.login);
                       },
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -204,4 +237,6 @@ class _AppSetUpPageState extends State<AppSetUpPage> {
       ),
     );
   }
+
+  
 }

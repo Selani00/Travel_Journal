@@ -14,8 +14,8 @@ class _NoteEditorScreenState extends State<NoteAddPage> {
   int color_id = Random().nextInt(AppColors.cardsColors.length);
   String date = DateTime.now().toString();
 
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _mainController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _mainController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,15 +52,22 @@ class _NoteEditorScreenState extends State<NoteAddPage> {
             SizedBox(
               height: 28.0,
             ),
-            TextField(
-              controller: _mainController,
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Note Content',
+            Container(
+              height: 70,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black, width: 2),
               ),
-              style: AppColors.mainContent,
+              child: TextField(
+                maxLength: null,
+                controller: _mainController,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Note Content',
+                ),
+                style: AppColors.mainContent,
+              ),
             ),
           ])),
       floatingActionButton: Transform.scale(

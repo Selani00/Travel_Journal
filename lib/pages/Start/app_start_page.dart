@@ -3,13 +3,25 @@ import 'package:travel_journal/components/app_colors.dart';
 import 'package:travel_journal/components/app_images.dart';
 import 'package:travel_journal/config/app_routes.dart';
 
-class AppStartPage extends StatelessWidget {
+class AppStartPage extends StatefulWidget {
   const AppStartPage({Key? key}) : super(key: key);
+
+  @override
+  State<AppStartPage> createState() => _AppStartPageState();
+}
+
+class _AppStartPageState extends State<AppStartPage> {
+  @override
+  void initState() {
+    Future.delayed(Duration(seconds: 3),
+        () => Navigator.of(context).pushNamed(AppRoutes.onetimefirst));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+        body: Container(
       width: double.infinity,
       height: double.infinity,
       child: Stack(
@@ -38,18 +50,15 @@ class AppStartPage extends StatelessWidget {
                       color: AppColors.yellowColor,
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    child:Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        GestureDetector(
-                          onTap: () => Navigator.of(context).pushNamed(AppRoutes.onetimefirst),
-                          child: Text(
-                            "Travel Journal",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 36,
-                              fontWeight: FontWeight.w500,
-                            ),
+                        Text(
+                          "Travel Journal",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 36,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
