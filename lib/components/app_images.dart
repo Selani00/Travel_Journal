@@ -2,7 +2,6 @@ class AppImages {
   static const _img = 'assets/images/';
   static const _svg = 'assets/svg/';
 
-
   //start to login
   static const startImg = '${_img}start.jpg';
   static const logo = '${_img}logo.png';
@@ -12,6 +11,7 @@ class AppImages {
   static const nexticon = '${_img}nexticon.png';
   static const setupback = '${_img}AppSetUp_Back.jpg';
   static const google = '${_img}google.png';
+  static const planback = '${_img}AppSetUp_Back.jpg';
 
   //svg
   static const doublearrow = '${_svg}doublearrow.svg';
